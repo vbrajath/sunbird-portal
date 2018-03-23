@@ -203,7 +203,7 @@ function checkHealth (req, response) {
       console.log('Portal service is healthy')
       return response.status(200).send(getHealthCheckResp(rsp, true, checksArrayObj))
     } else {
-      console.log({ rsp: checksArrayObj })
+      console.log('Portal service is not healthy', { rsp: checksArrayObj })
       return response.status(200).send(getHealthCheckResp(rsp, false, checksArrayObj))
     }
   })

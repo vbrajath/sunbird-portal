@@ -234,11 +234,11 @@ app.get('/get/envData', keycloak.protect(), function (req, res) {
 app.get('/v1/tenant/info', tenantHelper.getInfo)
 app.get('/v1/tenant/info/:tenantId', tenantHelper.getInfo)
 
-// proxy urls
-require('./proxy/contentEditorProxy.js')(app, keycloak)
-
 // healthcheck
 app.get('/health', healthService.createAndValidateRequestBody, healthService.checkHealth)
+
+// proxy urls
+require('./proxy/contentEditorProxy.js')(app, keycloak)
 
 app.all('/:tenantName', function (req, res) {
   tenantId = req.params.tenantName
